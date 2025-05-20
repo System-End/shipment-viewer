@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Shipment Viewer <%= " – #{@title}" if @title %></title>
-  <link rel="stylesheet" href="/hc.css">
-  <link rel="stylesheet" href="/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/384fa9fca2.js" crossorigin="anonymous"></script>
-  <%= yield_content :head %>
-  <script>
+  <head>
+    <title>Shipment Viewer <%= " – #{@title}" if @title %></title>
+    <link rel="stylesheet" href="/hc.css">
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/384fa9fca2.js" crossorigin="anonymous"></script>
+    <%= yield_content :head %>
+    <script>
       // The poor man's jQuery
       window.$ = (query, el=document)=>{
           return el.querySelector(query);
@@ -41,38 +41,45 @@
           });
         }
       });
-  </script>
-</head>
-<body>
-  <nav class="navbar fixed-top bg-light">
-    <a class="banner" target="_blank" href="https://hackclub.com/">
-      <img src="/flag.png" />
-    </a>
-    <a href='<%= @internal ? '/internal' : '/' %>' class="navbar-brand"><b>Shipment Viewer<%= " <span class='internal'>(cool edition)</span>" if @internal %></b></a>
-    <button id="dark-mode-toggle" class="">
-      <i class="fa-solid fa-moon"></i>
-    </button>
-  </nav>
-  <div class="main-content">
-    <div style="margin-top: 64px">
-      <% if @error %>
+    </script>
+  </head>
+  <body>
+    <nav class="navbar fixed-top bg-light">
+      <a class="banner" target="_blank" href="https://hackclub.com/">
+        <img src="/flag.png" />
+      </a>
+      <a href='<%= @internal ? '/internal' : '/' %>' class="navbar-brand"><b>Shipment Viewer<%= " <span class='internal'>(cool edition)</span>" if @internal %></b></a>
+      <button id="dark-mode-toggle" class="">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+    <div class="main-content">
+      <div style="margin-top: 64px">
+        <% if @error %>
+          <div class="container">
+            <div class="card" style="background: var(--orange); margin-bottom: var(--spacing-2); color: var(--white)">
+              <b>error:</b> <%= @error %>
+            </div>
+          </div>
+        <% end %>
         <div class="container">
-          <div class="card" style="background: var(--orange); margin-bottom: var(--spacing-2); color: var(--white)">
-            <b>error:</b> <%= @error %>
+          <div style="border: 2px dashed red; padding: 10px; margin: 20px 0 ">
+            <h2 style="color: red;">hey!!</h2>
+            <p>going forward, please use <a href="https://mail.hackclub.com">mail.hackclub.com</a> instead.</p>
+            <p>it shows everything shipment viewer did, and more!</p>
+            <p>this site is now deprecated and will be replaced with a redirect there once the new site has a public API.</p>
           </div>
         </div>
-      <% end %>
-      <%= yield %>
+        <%= yield %>
+      </div>
     </div>
-  </div>
-  <div class="footer">
-    <div class="footer-text">
-      <% if @internal %>
-        <span class="internal" style="padding: 4px !important;"><%= ENV['STATIC_BUILD'] ? "i'm kind of like if shipments had a viewer" : ["don't do anything i wouldn't do", "agent 47! welcome!", "i ship it :3", "i'm kind of like if shipments had a viewer", '🎶 "shipment viewer", definition: views some hack club mailings 🎵', "to continue using, please #{%w(meow bark woof nya~ scream).sample} as loudly as you can.", 'if a package is from us does that make it a hackage?'].sample %></span>
-      <% end %>
-      <p>with <3 from <a target="_blank" href="https://hackclub.com/">Hack Club</a>! open-source'd&nbsp@&nbsp<a target="_blank" href="https://github.com/hackclub/shipment-viewer">hackclub/shipment-viewer</a>&nbsp<i class="fa-brands fa-github"></i> (<%= footer_commit %>)</p>
+    <div class="footer">
+      <div class="footer-text">
+        <% if @internal %>
+          <span class="internal" style="padding: 4px !important;"><%= ENV['STATIC_BUILD'] ? "i'm kind of like if shipments had a viewer" : ["don't do anything i wouldn't do", "agent 47! welcome!", "i ship it :3", "i'm kind of like if shipments had a viewer", '🎶 "shipment viewer", definition: views some hack club mailings 🎵', "to continue using, please #{%w(meow bark woof nya~ scream).sample} as loudly as you can.", 'if a package is from us does that make it a hackage?'].sample %></span>
+        <% end %>
+        <p>with <3 from <a target="_blank" href="https://hackclub.com/">Hack Club</a>! open-source'd&nbsp@&nbsp<a target="_blank" href="https://github.com/hackclub/shipment-viewer">hackclub/shipment-viewer</a>&nbsp<i class="fa-brands fa-github"></i> (<%= footer_commit %>)</p>
+      </div>
     </div>
-  </div>
-  
-</body>
+  </body>
 </html>

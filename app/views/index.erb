@@ -1,21 +1,19 @@
 <div class="container">
   <div class="card sunken" style="margin-bottom: var(--spacing-3);">
     <h1>Shipment Viewer</h1>
-    <p>The one-stop shop to view all your shipments from <b>Hack Club HQ</b>! (think <b>High Seas</b>, other <b>YSWSes</b>, random poster shipments, live feral raccoons, etc.)</p>
-    <p>Need help? If it's for High Seas, send us a message in <a target="_blank" href="https://hackclub.slack.com/archives/C07PZNMBPBN">#high-seas-help</a>!</p>
-  </div>
-  <div class="card sunken" style="margin-bottom: var(--spacing-3);">
-    <h1>what's <%= @internal ? "their" : "your" %> email?</h1>
-    <form action="<%= @internal ? '/dyn/internal' : '/dyn/send_mail' %>" method="post">
-      <input type="email" placeholder="orpheus@hackclub.com" id="email" name="email" style="margin-top: var(--spacing-3);" required="required"> <br/>
-      <input class="button" type="submit" style="margin-top: var(--spacing-3); margin-bottom: var(--spacing-3);" value="go!">
-    </form>
-  </div>
-  <% if @internal %>
-    <div class="card sunken internal">
-      <a href="/set_internal_key">set internal key?</a>
-        <br>
-      <p>You're in <a href='/internal'>internal</a> mode rn! Switch back to <a href="/">external</a> mode?</p>
+    <br/>
+    <div class="card sunken" style="margin-bottom: var(--spacing-3);">
+      <h1>what's <%= @internal ? "their" : "your" %> email?</h1>
+      <form action="<%= @internal ? '/dyn/internal' : '/dyn/send_mail' %>" method="post">
+        <input type="email" placeholder="orpheus@hackclub.com" id="email" name="email" style="margin-top: var(--spacing-3);" required="required"> <br/>
+        <input class="button" type="submit" style="margin-top: var(--spacing-3); margin-bottom: var(--spacing-3);" value="go!">
+      </form>
     </div>
-  <% end %>
-</div>
+    <% if @internal %>
+      <div class="card sunken internal">
+        <a href="/set_internal_key">set internal key?</a>
+        <br>
+        <p>You're in <a href='/internal'>internal</a> mode rn! Switch back to <a href="/">external</a> mode?</p>
+      </div>
+    <% end %>
+  </div>
